@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#include "Tweet.h"
+#include "AsyncImageView/AsyncImageView.h"
 
 @interface TweetCell : UITableViewCell
+
+- (void)updateWithTweet:(Tweet*)tweet;
 
 @end

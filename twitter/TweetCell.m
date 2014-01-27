@@ -8,6 +8,16 @@
 
 #import "TweetCell.h"
 
+@interface TweetCell()
+
+@property (weak, nonatomic) IBOutlet AsyncImageView *profilePicture;
+@property (weak, nonatomic) IBOutlet UILabel *displayName;
+@property (weak, nonatomic) IBOutlet UILabel *twitterHandle;
+@property (weak, nonatomic) IBOutlet UILabel *timestamp;
+@property (weak, nonatomic) IBOutlet UILabel *tweet;
+
+@end
+
 @implementation TweetCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -24,6 +34,15 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)updateWithTweet:(Tweet*)tweet
+{
+    self.profilePicture.imageURL = tweet.profilePictureURL;
+    self.displayName.text = tweet.displayName;
+    self.twitterHandle.text = tweet.twitterHandle;
+    self.timestamp.text = tweet.timestamp;
+    self.tweet.text = tweet.content;
 }
 
 @end
