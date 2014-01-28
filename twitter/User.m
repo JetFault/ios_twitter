@@ -15,6 +15,21 @@ NSString * const kCurrentUserKey = @"kCurrentUserKey";
 
 @implementation User
 
+- (NSURL*)profilePictureURL
+{
+    return [NSURL URLWithString:[self.data valueOrNilForKeyPath:@"profile_image_url"]];
+}
+
+- (NSString*)name
+{
+    return [self.data valueOrNilForKeyPath:@"name"];
+}
+
+- (NSString*)twitterHandle
+{
+    return [@"@" stringByAppendingString:[self.data valueOrNilForKeyPath:@"screen_name"]];
+}
+
 static User *_currentUser;
 
 + (User *)currentUser {

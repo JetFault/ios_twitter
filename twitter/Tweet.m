@@ -54,7 +54,7 @@
 
 - (NSNumber*)favourites
 {
-    return [self.data valueOrNilForKeyPath:@"favourites_count"];
+    return [self.data valueOrNilForKeyPath:@"favorite_count"];
 }
 
 + (NSMutableArray *)tweetsWithArray:(NSArray *)array {

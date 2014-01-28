@@ -12,6 +12,6 @@
 
 @interface TweetDetailViewController : UIViewController
 
-@property (nonatomic, weak) Tweet* tweet;
+@property (nonatomic, weak) Tweet *tweetModel;
 
 @end

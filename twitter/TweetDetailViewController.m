@@ -13,8 +13,8 @@
 @property (weak, nonatomic) IBOutlet AsyncImageView *profilePicture;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *twitterHandle;
-@property (weak, nonatomic) IBOutlet UILabel *content;
 @property (weak, nonatomic) IBOutlet UILabel *timestamp;
+@property (weak, nonatomic) IBOutlet UILabel *content;
 
 @property (weak, nonatomic) IBOutlet UILabel *numRetweets;
 @property (weak, nonatomic) IBOutlet UILabel *numFavourites;
@@ -40,7 +40,7 @@
 {
     [super viewDidLoad];
     
-    [self updateViewWithTweet:self.tweet];
+    [self updateViewWithTweet:self.tweetModel];
 }
 
 - (void)updateViewWithTweet:(Tweet*)tweet

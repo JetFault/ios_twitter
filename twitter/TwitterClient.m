@@ -65,6 +65,15 @@ static NSString * const kAccessTokenKey = @"kAccessTokenKey";
     [self getPath:@"1.1/statuses/home_timeline.json" parameters:params success:success failure:failure];
 }
 
+#pragma mark - Compose API
+
+- (void)postTweet:(NSString*)text success:(void (^) (AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    NSString* postURL = @"1.1/statuses/update.json";
+    
+    [self postPath:postURL parameters:@{@"status": text} success:success failure:failure];
+}
+
 #pragma mark - Private methods
 
 - (void)setAccessToken:(AFOAuth1Token *)accessToken {

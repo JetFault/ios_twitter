@@ -9,6 +9,7 @@
 #import "TimelineVC.h"
 #import "TweetCell.h"
 #import "TweetDetailViewController.h"
+#import "ComposeVC.h"
 
 @interface TimelineVC ()
 
@@ -116,8 +117,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TweetDetailViewController *tweetDVC = [[TweetDetailViewController alloc] initWithNibName:@"TweetDetailViewController" bundle:nil];
-    NSLog(@"%@", self.tweets[indexPath.row]);
-    tweetDVC.tweet = self.tweets[indexPath.row];
+    tweetDVC.tweetModel = self.tweets[indexPath.row];
     [self.navigationController pushViewController:tweetDVC animated:YES];
 }
 
@@ -140,7 +140,8 @@
 }
 
 - (void)onComposeButton {
-    
+    ComposeVC *composeVC = [[ComposeVC alloc] initWithNibName:@"ComposeVC" bundle:nil];
+    [self presentViewController:composeVC animated:YES completion:nil];
 }
 
 - (void)reload {

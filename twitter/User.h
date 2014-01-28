@@ -13,6 +13,11 @@ extern NSString *const UserDidLogoutNotification;
 
 @interface User : RestObject
 
+@property (nonatomic, strong, readonly) NSString* name;
+@property (nonatomic, strong, readonly) NSString* twitterHandle;
+@property (nonatomic, strong, readonly) NSURL* profilePictureURL;
+
+
 + (User *)currentUser;
 + (void)setCurrentUser:(User *)currentUser;
 
