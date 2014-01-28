@@ -74,6 +74,24 @@ static NSString * const kAccessTokenKey = @"kAccessTokenKey";
     [self postPath:postURL parameters:@{@"status": text} success:success failure:failure];
 }
 
+#pragma mark - Retweet API
+
+- (void)retweetTweet:(NSString*)tweetID success:(void (^) (AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    NSString* postURL = [[@"1.1/statuses/retweet/" stringByAppendingString:tweetID] stringByAppendingString:@".json"];
+    
+    [self postPath:postURL parameters:nil success:success failure:failure];
+}
+
+#pragma mark - favourite API
+
+- (void)favouriteTweet:(NSString*)id success:(void (^) (AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    NSString* postURL = @"1.1/favorites/create.json";
+    
+    [self postPath:postURL parameters:@{@"id": id} success:success failure:failure];
+}
+
 #pragma mark - Private methods
 
 - (void)setAccessToken:(AFOAuth1Token *)accessToken {

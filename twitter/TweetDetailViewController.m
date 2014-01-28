@@ -7,6 +7,7 @@
 //
 
 #import "TweetDetailViewController.h"
+#import "TwitterClient.h"
 
 @interface TweetDetailViewController ()
 
@@ -59,6 +60,31 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)onReplyButton:(id)sender {
+}
+
+- (IBAction)onFavouriteButton:(id)sender {
+    [[TwitterClient instance] favouriteTweet:self.tweetModel.id success:^(AFHTTPRequestOperation *operation, id response) {
+        
+        self.favouriteButton.tintColor = [UIColor yellowColor];
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+}
+
+- (IBAction)onRetweetButton:(id)sender {
+       [[TwitterClient instance] retweetTweet:self.tweetModel.id success:^(AFHTTPRequestOperation *operation, id response) {
+        
+        self.retweetButton.tintColor = [UIColor yellowColor];
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
 }
 
 @end

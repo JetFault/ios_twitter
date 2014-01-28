@@ -10,6 +10,7 @@
 
 @interface Tweet : RestObject
 
+@property (nonatomic, strong, readonly) NSString *id;
 @property (nonatomic, strong, readonly) NSURL *profilePictureURL;
 @property (nonatomic, strong, readonly) NSString *displayName;
 @property (nonatomic, strong, readonly) NSString *twitterHandle;
