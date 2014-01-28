@@ -37,6 +37,7 @@
 {
     [super viewDidLoad];
     
+    self.tweetTextView.delegate = self;
     [self updateWithUser:[User currentUser]];
 }
 
@@ -64,6 +65,11 @@
 - (NSString*)getTweetCharactersAsString
 {
     return [NSString stringWithFormat:@"%d", self.getTweetCharacters];
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    self.characterLabel.text = [self getTweetCharactersAsString];
 }
 
 - (IBAction)onTweetButton:(id)sender {
