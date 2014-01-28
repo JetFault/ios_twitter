@@ -19,14 +19,14 @@
     return [NSURL URLWithString:[self.data valueOrNilForKeyPath:@"user.profile_image_url"]];
 }
 
-- (NSString*)screenName
+- (NSString*)displayName
 {
-    return [self.data valueOrNilForKeyPath:@"user.screen_name"];
+    return [self.data valueOrNilForKeyPath:@"user.name"];
 }
 
 - (NSString*)twitterHandle
 {
-    return [@"@" stringByAppendingString:[self.data valueOrNilForKeyPath:@"user.name"]];
+    return [@"@" stringByAppendingString:[self.data valueOrNilForKeyPath:@"user.screen_name"]];
 }
 
 - (NSString*)timestamp
@@ -45,6 +45,16 @@
     
     NSLog(dateString);
     return dateString;
+}
+
+- (NSNumber*)retweets
+{
+    return [self.data valueOrNilForKeyPath:@"retweet_count"];
+}
+
+- (NSNumber*)favourites
+{
+    return [self.data valueOrNilForKeyPath:@"favourites_count"];
 }
 
 + (NSMutableArray *)tweetsWithArray:(NSArray *)array {

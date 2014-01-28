@@ -16,6 +16,9 @@
 @property (nonatomic, strong, readonly) NSString *timestamp;
 @property (nonatomic, strong, readonly) NSString *content;
 
+@property (nonatomic, strong, readonly) NSNumber* retweets;
+@property (nonatomic, strong, readonly) NSNumber* favourites;
+
 + (NSMutableArray *)tweetsWithArray:(NSArray *)array;
 
 @end

@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *displayName;
 @property (weak, nonatomic) IBOutlet UILabel *twitterHandle;
 @property (weak, nonatomic) IBOutlet UILabel *timestamp;
-@property (weak, nonatomic) IBOutlet UILabel *tweet;
+@property (weak, nonatomic) IBOutlet UILabel *content;
 
 @end
 
@@ -36,13 +36,42 @@
     // Configure the view for the selected state
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    // Make sure the contentView does a layout pass here so that its subviews have their frames set, which we
+    // need to use to set the preferredMaxLayoutWidth below.
+    [self.contentView setNeedsLayout];
+    [self.contentView layoutIfNeeded];
+    
+    self.content.preferredMaxLayoutWidth = CGRectGetWidth(self.content.frame);
+}
+
 - (void)updateWithTweet:(Tweet*)tweet
 {
     self.profilePicture.imageURL = tweet.profilePictureURL;
     self.displayName.text = tweet.displayName;
     self.twitterHandle.text = tweet.twitterHandle;
     self.timestamp.text = tweet.timestamp;
-    self.tweet.text = tweet.content;
+    self.content.text = tweet.content;
 }
+
+//+ (CGSize)sizeOfLabel:(UILabel *)label
+//{
+//    return [label.text sizeWithFont:label.font constrainedToSize:label.frame.size lineBreakMode:label.lineBreakMode];
+//}
+//
+//- (CGFloat)sizeOfCell
+//{
+//    CGFloat contentSize = [TweetCell sizeOfLabel:self.content].height;
+//    CGFloat authorSize = [TweetCell sizeOfLabel:self.displayName].height;
+//    
+//    CGFloat minimumSize = self.profilePicture.frame.size.height;
+//    
+//    CGFloat combinedHeight = contentSize + authorSize;
+//    
+//    return MAX(combinedHeight, minimumSize);
+//}
 
 @end
